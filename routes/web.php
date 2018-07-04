@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/redirect', 'SocialAuthGoogleController@redirect');
+Route::get('/callback', 'SocialAuthGoogleController@callback');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/settings', 'SettingsController@index');
@@ -24,3 +27,9 @@ Route::post('/settings', array(
   'as' => 'settings',
   'uses' => 'SettingsController@update'
 ));
+
+
+
+Route::get('/profile', 'ProfileController@index');
+Route::post('/profile', 'ProfileController@uploadProfilePhoto');
+// Route::post('/{username}/upload/cover', 'ProfileController@uploadCover');

@@ -13,11 +13,10 @@
           <div class="alert alert-danger"><i class="fa fa-times" aria-hidden="true"></i> <strong>{!! session('alert-danger') !!}</strong></div>
         @endif
       </div>
-      
+
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header"><span style="color:red;">{{ Auth::user()->name }}'s'</span> Dashboard</div>
-
+          @include('widgets.panel')
           <div class="card-body">
             @if (session('status'))
               <div class="alert alert-success" role="alert">
@@ -33,28 +32,28 @@
             @csrf
 
             <div class="form-group row">
-              <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+              <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
               <div class="col-md-6">
-                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required autofocus>
+                <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ $user->first_name }}" required autofocus>
 
-                @if ($errors->has('name'))
+                @if ($errors->has('first_name'))
                   <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('name') }}</strong>
+                    <strong>{{ $errors->first('first_name') }}</strong>
                   </span>
                 @endif
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Last name') }}</label>
+              <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last name') }}</label>
 
               <div class="col-md-6">
-                <input id="lname" type="text" class="form-control{{ $errors->has('lname') ? ' is-invalid' : '' }}" name="lname" value="{{ $user->lname }}" required autofocus>
+                <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ $user->last_name }}" required autofocus>
 
-                @if ($errors->has('lname'))
+                @if ($errors->has('last_name'))
                   <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('lname') }}</strong>
+                    <strong>{{ $errors->first('last_name') }}</strong>
                   </span>
                 @endif
               </div>
@@ -75,14 +74,28 @@
             </div>
 
             <div class="form-group row">
-              <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
+              <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
               <div class="col-md-6">
-                <input id="age" type="number"  max="110"  class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{ $user->age }}"required>
+                <input id="birthday" type="date"  max="110"  class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ $user->birthday }}"required>
 
-                @if ($errors->has('age'))
+                @if ($errors->has('birthday'))
                   <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('age') }}</strong>
+                    <strong>{{ $errors->first('birthday') }}</strong>
+                  </span>
+                @endif
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
+
+              <div class="col-md-6">
+                <input id="sex" type="string"  max="10"  class="form-control{{ $errors->has('sex') ? ' is-invalid' : '' }}" name="sex" value="{{ $user->sex }}"required>
+                
+                @if ($errors->has('sex'))
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('sex') }}</strong>
                   </span>
                 @endif
               </div>

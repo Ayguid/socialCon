@@ -27,6 +27,6 @@ class AddProfilePicToUsersTable extends Migration
   public function down()
   {
     //
-    
+
   }
 }

@@ -1,0 +1,55 @@
+
+#form-upload-profile-photo{
+display: flex;
+flex-direction: column;
+align-items:center;  
+}
+/* botones e inputs foto perfil */
+.btn-file {
+position: relative;
+overflow: hidden;
+width: 100%;
+}
+.btn-file input[type=file] {
+position: absolute;
+top: 0;
+right: 0;
+min-width: 100%;
+min-height: 100%;
+font-size: 100px;
+text-align: right;
+filter: alpha(opacity=0);
+opacity: 0;
+outline: none;
+background: white;
+cursor: inherit;
+display: block;
+}
+#img-upload{
+width: 100%;
+}
+#imgInp::-webkit-file-upload-button {
+  visibility: hidden;
+}
+#imgInp{
+
+  content: 'Select some files';
+  display: inline-block;
+  /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+#imgInp:hover::before {
+  border-color: black;
+}
+#imgInp:active::before {
+  /* background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); */
+}

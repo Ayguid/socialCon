@@ -34,19 +34,21 @@ class SettingsController extends Controller
   public function update(Request $request){
     $save = false;
     $user = [
-      'name' => $request->input("name"),
-      'lname' => $request->input("lname"),
+      'first_name' => $request->input("first_name"),
+      'last_name' => $request->input("last_name"),
       'email' => $request->input("email"),
-      'age' => $request->input("age"),
+      'birthday' => $request->input("birthday"),
+      'sex' => $request->input("sex"),
       'password' => 'required|string|min:6',
       'previous_pass' => 'required|string|min:6|confirmed'
     ];
 
     $validator = Validator::make($request->all(), [
-      'name' => 'required|max:191',
-      'lname' => 'required|max:191',
+      'first_name' => 'required|string|max:255',
+      'last_name' => 'required|string|max:255',
       'email' => 'required|email|max:191|unique:users,email,' . Auth::user()->id,
-      'age' => 'required|max:3',
+      'birthday' => 'required|string|max:100',
+      'sex' => 'required|string|max:10',
     ]);
 
     if ($validator->fails())
@@ -59,10 +61,11 @@ class SettingsController extends Controller
     {
       if(Hash::check($request->input("previous_pass"), Auth::user()->password))
       {
-        Auth::user()->name = $user['name'];
-        Auth::user()->lname = $user['lname'];
+        Auth::user()->first_name = $user['first_name'];
+        Auth::user()->last_name = $user['last_name'];
         Auth::user()->email = $user['email'];
-        Auth::user()->age = $user['age'];
+        Auth::user()->birthday = $user['birthday'];
+        Auth::user()->sex = $user['sex'];
         Auth::user()->password = Hash::make($request->input("password"));
         $save = Auth::user()->save();
       }
