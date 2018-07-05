@@ -28,7 +28,7 @@
 
 
 
-          <form method="post" action="">
+          <form id="settings" method="post" action="">
             @csrf
 
             <div class="form-group row">
@@ -92,12 +92,20 @@
 
               <div class="col-md-6">
                 <input id="sex" type="string"  max="10"  class="form-control{{ $errors->has('sex') ? ' is-invalid' : '' }}" name="sex" value="{{ $user->sex }}"required>
-                
+
                 @if ($errors->has('sex'))
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('sex') }}</strong>
                   </span>
                 @endif
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="previous_pass" class="col-md-4 col-form-label text-md-right">{{ __('Previous Password') }}</label>
+
+              <div class="col-md-6">
+                <input id="previous_pass" type="password" class="form-control" name="previous_pass" required>
               </div>
             </div>
 
@@ -115,13 +123,6 @@
               </div>
             </div>
 
-            <div class="form-group row">
-              <label for="previous_pass" class="col-md-4 col-form-label text-md-right">{{ __('Previous Password') }}</label>
-
-              <div class="col-md-6">
-                <input id="previous_pass" type="password" class="form-control" name="previous_pass" required>
-              </div>
-            </div>
 
             <div class="form-group row mb-0">
               <div class="col-md-6 offset-md-4">

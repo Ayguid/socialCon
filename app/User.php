@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Product;
 class User extends Authenticatable
 {
   use Notifiable;
@@ -38,5 +38,15 @@ class User extends Authenticatable
       $path = "images/profile.png";
     }
     return url('/'.$path);
+  }
+
+
+
+
+  public function getProducts()
+  {
+    $myProducts = Product::select('product_name','price')->where('user_id', $this->id)->orderBy('product_name', 'desc')->get();
+    
+    return $myProducts;
   }
 }

@@ -32,11 +32,22 @@ window.onload = function() {
             window.location.replace("/profile");
           });
         }else{
-          swal('Error al subir la foto!');
+          swal({
+            title: "Error?",
+            text: "Try again, or another pic!",
+            icon: "warning",
+          }).then((value) => {
+            window.location.replace("/profile");
+          });
         }
       },
       error: function(){
-        swal('Error al subir la foto');
+        swal({
+          title: "Error?",
+          text: "Try again, or another pic!",
+          icon: "error",
+
+        });
       }
     });
   }

@@ -152,6 +152,7 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,7 +214,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         //
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
+        
 
 
     ],

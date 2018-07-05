@@ -62,7 +62,8 @@
                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
               </li>
             @else
-              <li class="nav-item dropdown">
+
+
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   <i class="fas fa-ellipsis-h"></i>..{{ Auth::user()->first_name }} <span class="caret"></span>
                 </a>
@@ -73,7 +74,8 @@
                   document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
                 </a>
-
+                <li class="nav-item dropdown">
+              
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
                 </form>
@@ -89,7 +91,8 @@
     @yield('content')
   </main>
 </div>
-<script src="{{ asset('js/profile.js') }}"></script>
+
+
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

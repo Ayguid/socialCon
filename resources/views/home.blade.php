@@ -22,6 +22,10 @@
                   <a class="" href="{{ url('/profile') }}" role="button" ><i class="fas fa-user"> &nbsp;&nbsp; </i>User Profile</a>
                 </div>
 
+                <div class="card-body">
+                  <a class="" href="{{ url('/products') }}" role="button" ><i class="fas fa-store"> &nbsp;&nbsp; </i>My products</a>
+                </div>
+                @include('widgets.search')
             </div>
         </div>
     </div>

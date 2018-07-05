@@ -17,11 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//google
 Route::get('/redirect', 'SocialAuthGoogleController@redirect');
 Route::get('/callback', 'SocialAuthGoogleController@callback');
 
+//home
 Route::get('/home', 'HomeController@index')->name('home');
 
+//settings
 Route::get('/settings', 'SettingsController@index');
 Route::post('/settings', array(
   'as' => 'settings',
@@ -29,7 +32,10 @@ Route::post('/settings', array(
 ));
 
 
-
+//profile
 Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@uploadProfilePhoto');
-// Route::post('/{username}/upload/cover', 'ProfileController@uploadCover');
+
+//products
+Route::get('/products', 'ProductsController@index');
+Route::post('/products', 'ProductsController@addProduct');
