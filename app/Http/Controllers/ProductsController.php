@@ -92,7 +92,11 @@ class ProductsController extends Controller
 
   }
 
-
+  public function showProduct($id)
+  {
+    $product=Product::productData($id);
+    return view('productInfo', compact('product'));
+  }
 
 
 

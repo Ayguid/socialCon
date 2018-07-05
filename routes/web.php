@@ -39,3 +39,4 @@ Route::post('/profile', 'ProfileController@uploadProfilePhoto');
 //products
 Route::get('/products', 'ProductsController@index');
 Route::post('/products', 'ProductsController@addProduct');
+Route::get('/products/{id}', 'ProductsController@showProduct');

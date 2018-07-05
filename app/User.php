@@ -45,8 +45,8 @@ class User extends Authenticatable
 
   public function getProducts()
   {
-    $myProducts = Product::select('product_name','price')->where('user_id', $this->id)->orderBy('product_name', 'desc')->get();
-    
+    $myProducts = Product::select('product_name','price','id')->where('user_id', $this->id)->orderBy('product_name', 'desc')->get();
+
     return $myProducts;
   }
 }

@@ -18,5 +18,10 @@ class Product extends Model
 
 
 
+      public static function productData($id)
+      {
+        $productData = Product::all()->where('id', $id);
+        return $productData;
+      }
 
 }
