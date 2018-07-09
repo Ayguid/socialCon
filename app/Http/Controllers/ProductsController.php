@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-
-
 use App\Models\User;
 use Auth;
 use DB;
@@ -30,13 +28,35 @@ class ProductsController extends Controller
 
 
   public function index(){
-    if (Session::has('user')){
+    if (Session::has('user'))
+    {
       $user = Session::get('user');
-    }else{
+    }
+    else
+    {
       $user = Auth::user();
     }
     return view('products', compact('user'));
   }
+
+
+
+
+  public function showProduct($id)
+  {
+
+    if (Auth::user())
+    {
+      $product = Product::find($id);
+      return view('productInfo')->with('product',$product);
+    }
+  }
+
+
+
+
+
+
 
 
   public function addProduct(Request $request)
@@ -47,7 +67,7 @@ class ProductsController extends Controller
     // $product->save();
     // var_dump($product);
     $save = false;
-    $model = [
+    $input = [
       'user_id' => $user->id,
       'product_name' => $request->input("product_name"),
       'product_description' => $request->input("product_description"),
@@ -58,7 +78,7 @@ class ProductsController extends Controller
     $validator = Validator::make($request->all(), [
       'product_name' => 'required|string|max:255',
       'product_description' => 'required|string|max:255',
-      'product_category' => 'required|string|max:100',
+      'product_category' => 'required|integer|max:100',
       'price' => 'required|string|max:10',
     ]);
 
@@ -71,10 +91,10 @@ class ProductsController extends Controller
     else if (!$validator->fails())
     {
         $product->user_id = $user->id;
-        $product->product_name = $model['product_name'];
-        $product->product_description = $model['product_description'];
-        $product->product_category = $model['product_category'];
-        $product->price = $model['price'];
+        $product->product_name = $input['product_name'];
+        $product->product_description = $input['product_description'];
+        $product->product_category = $input['product_category'];
+        $product->price = $input['price'];
         $save =$product->save();
     }
 
@@ -92,11 +112,11 @@ class ProductsController extends Controller
 
   }
 
-  public function showProduct($id)
-  {
-    $product=Product::productData($id);
-    return view('productInfo', compact('product'));
-  }
+
+
+
+
+
 
 
 

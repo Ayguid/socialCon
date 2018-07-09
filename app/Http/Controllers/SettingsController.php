@@ -22,7 +22,7 @@ class SettingsController extends Controller
 
   public function index(){
     if (Session::has('user')){
-      $user = Session::get('user');
+      $input = Session::get('user');
     }else{
       $user = Auth::user();
     }
@@ -33,7 +33,7 @@ class SettingsController extends Controller
 
   public function update(Request $request){
     $save = false;
-    $user = [
+    $input = [
       'first_name' => $request->input("first_name"),
       'last_name' => $request->input("last_name"),
       'email' => $request->input("email"),
@@ -61,11 +61,11 @@ class SettingsController extends Controller
     {
       if(Hash::check($request->input("previous_pass"), Auth::user()->password))
       {
-        Auth::user()->first_name = $user['first_name'];
-        Auth::user()->last_name = $user['last_name'];
-        Auth::user()->email = $user['email'];
-        Auth::user()->birthday = $user['birthday'];
-        Auth::user()->sex = $user['sex'];
+        Auth::user()->first_name = $input['first_name'];
+        Auth::user()->last_name = $input['last_name'];
+        Auth::user()->email = $input['email'];
+        Auth::user()->birthday = $input['birthday'];
+        Auth::user()->sex = $input['sex'];
         Auth::user()->password = Hash::make($request->input("password"));
         $save = Auth::user()->save();
       }

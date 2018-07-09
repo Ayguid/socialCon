@@ -63,7 +63,6 @@ class ProfileController extends Controller
 
       if (!$validator->fails())
       {
-        // File::delete($user->profile_pic);
         if($user->profile_pic!=null){
 
           Storage::delete('public/uploads/profile_photos/'.$user->profile_pic);
@@ -76,7 +75,6 @@ class ProfileController extends Controller
 
       }
       return Response::json($response);
-      // return view('profile', compact('user'));
     }
   }
 

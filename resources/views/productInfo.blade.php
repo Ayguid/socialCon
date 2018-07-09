@@ -6,28 +6,27 @@
 
     <div class="row justify-content-center">
 
-
-
       <div class="col-md-8">
+
         <div class="card">
-
-
 
           @include('widgets.panel')
           <div class="card-body">
           </div>
 
           <div class="card-body">
-   {{-- {{App\Product::productData(2)}} --}}
-
+             Name :{{$product->product_name}}<br>
+             Price :{{$product->price}}<br>
+             Description :{{$product->product_description}}<br>
+             Category :{{$product->getCategory->category}}<br>
           </div>
 
 
 
+          <div class="card-body">
+            <a class="" href="{{route('products')}}" role="button" ><i class="fas fa-store">&nbsp;&nbsp; </i>Back to products</a><br>
+          </div>
 
-          <div class="form-group">
-
-             </div>
 
 
 

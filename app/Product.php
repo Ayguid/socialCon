@@ -3,8 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Foundation\Auth\User;
-
+use Illuminate\Foundation\Auth\User;
+use App\ProductCategory;
 
 class Product extends Model
 {
@@ -18,10 +18,16 @@ class Product extends Model
 
 
 
-      public static function productData($id)
-      {
-        $productData = Product::all()->where('id', $id);
-        return $productData;
-      }
+    public function user()
+    {
+      return $this->belongsTo('App\User');
+    }
+
+
+    public function getCategory()
+    {
+      return $this->hasOne(ProductCategory::class, 'product_category_id', 'product_category');
+    }
+
 
 }

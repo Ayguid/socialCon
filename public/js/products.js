@@ -1,6 +1,6 @@
 window.onload = function() {
 
-  swal('This is your money making area');
+  // swal('This is your money making area');
 
 
 

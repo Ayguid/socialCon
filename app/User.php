@@ -28,6 +28,22 @@ class User extends Authenticatable
   ];
 
 
+  public function getProducts()
+  {
+    return  $this->hasMany('App\Product')->orderBy('created_at','desc');
+  }
+
+
+
+
+
+
+
+
+
+
+  
+
 
   public function getPhoto(){
     if (!empty($this->profile_pic)){
@@ -40,13 +56,4 @@ class User extends Authenticatable
     return url('/'.$path);
   }
 
-
-
-
-  public function getProducts()
-  {
-    $myProducts = Product::select('product_name','price','id')->where('user_id', $this->id)->orderBy('product_name', 'desc')->get();
-
-    return $myProducts;
-  }
 }
